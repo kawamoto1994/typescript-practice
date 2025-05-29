@@ -1,0 +1,11 @@
+# Node modules
+node_modules/
+
+# Environment files
+.env
+.env.*.local
+
+# OS generated files
+Thumbs.db
+Desktop.ini
+.DS_Store
