@@ -12,16 +12,20 @@ if (targetElement250607_01 instanceof HTMLElement) {
 	checkList.forEach((item) => {
 		item.addEventListener('change', () => {
 			const checkedList = document.querySelectorAll('[data-flavor]:checked');
-			if (checkedList.length === 0) {
-				targetElement250607_01.innerHTML = '';
-			}
-		checkedList.forEach((item) => {
-			if (item instanceof HTMLInputElement) {
-				const snack = item.value;
-				const filterSnackList = snackList.filter((item) => item.flavor === snack).map((item) => [item.name]);
-				targetElement250607_01.innerHTML += filterSnackList.join('');
+			const snackValues : string[] = [];
+			checkedList.forEach((item) => {
+				if (item instanceof HTMLInputElement) {
+					snackValues.push(item.value);
+				}
+			});
+			const filterSnackList : string[] = snackList.filter((item) => {
+				return snackValues.includes(item.flavor);
+			}).map((item) => item.name);
+			if(filterSnackList.length) {
+				targetElement250607_01.innerHTML = `${filterSnackList.join('と')}が絞り込まれました！`;
+			} else {
+				targetElement250607_01.innerHTML = `絞り込みは0件です`;
 			}
 		})
 	})
-})
 }

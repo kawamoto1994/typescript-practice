@@ -1,10 +1,11 @@
-var colorTarget = document.querySelector('[data-color]');
-var colorButtons = document.querySelectorAll('[data-color-button]');
+"use strict";
+const colorTarget = document.querySelector('[data-color]');
+const colorButtons = document.querySelectorAll('[data-color-button]');
 if (colorButtons.length && colorTarget) {
-    colorButtons.forEach(function (button) {
-        var btn = button;
-        btn.addEventListener('click', function (event) {
-            var color = btn.dataset.colorButton;
+    colorButtons.forEach((button) => {
+        const btn = button;
+        btn.addEventListener('click', (event) => {
+            const color = btn.dataset.colorButton;
             if (color) {
                 colorTarget.style.backgroundColor = color;
             }

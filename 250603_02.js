@@ -1,25 +1,25 @@
-var snackButton = document.querySelector('#snack-button');
-var targetElement250603_02 = document.querySelector('[data-output]');
+"use strict";
+const snackButton = document.querySelector('#snack-button');
+const targetElement250603_02 = document.querySelector('[data-output]');
 if (snackButton instanceof HTMLButtonElement && targetElement250603_02 instanceof HTMLElement) {
-    var snackObject_1 = {};
-    snackButton.addEventListener('click', function () {
+    const snackObject = {};
+    snackButton.addEventListener('click', () => {
         targetElement250603_02.innerHTML = '';
-        var checkedItem = document.querySelectorAll('[data-snack]:checked');
-        checkedItem.forEach(function (item) {
-            var snackElement = item;
-            var snack = snackElement.value;
-            if (snackObject_1[snack]) {
-                snackObject_1[snack]++;
+        const checkedItem = document.querySelectorAll('[data-snack]:checked');
+        checkedItem.forEach((item) => {
+            const snackElement = item;
+            const snack = snackElement.value;
+            if (snackObject[snack]) {
+                snackObject[snack]++;
             }
             else {
-                snackObject_1[snack] = 1;
+                snackObject[snack] = 1;
             }
         });
-        var result = Object.keys(snackObject_1).map(function (key) { return [key, snackObject_1[key]]; });
-        var ranking = result.sort(function (b, a) { return a[1] - b[1]; });
-        ranking.forEach(function (_a) {
-            var snack = _a[0], num = _a[1];
-            targetElement250603_02.innerHTML += "<li>".concat(snack, ": ").concat(num, "\u500B</li>");
+        const result = Object.keys(snackObject).map((key) => [key, snackObject[key]]);
+        const ranking = result.sort((b, a) => a[1] - b[1]);
+        ranking.forEach(([snack, num]) => {
+            targetElement250603_02.innerHTML += `<li>${snack}: ${num}個</li>`;
         });
     });
 }

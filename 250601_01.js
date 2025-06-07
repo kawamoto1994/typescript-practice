@@ -1,25 +1,26 @@
-var input = document.querySelector('#name');
-var button = document.querySelector('#submit-button');
-var targetElement250601_01 = document.querySelector('[data-output]');
-var audio250601_01 = new Audio('250601_01.mp3');
-var nameOutput = function (name) {
+"use strict";
+const input = document.querySelector('#name');
+const button = document.querySelector('#submit-button');
+const targetElement250601_01 = document.querySelector('[data-output]');
+const audio250601_01 = new Audio('250601_01.mp3');
+const nameOutput = (name) => {
     if (targetElement250601_01 instanceof HTMLElement) {
         targetElement250601_01.innerHTML = name;
     }
 };
-button.addEventListener('click', function (event) {
-    var getName = input.value;
+button.addEventListener('click', (event) => {
+    const getName = input.value;
     if (getName) {
         audio250601_01.currentTime = 0;
         audio250601_01.play();
-        nameOutput("\u3053\u3093\u306B\u3061\u306F\u3001".concat(getName, "\u3055\u3093\uFF01"));
+        nameOutput(`こんにちは、${getName}さん！`);
         input.value = '';
     }
     else {
         nameOutput('名前を入力してください');
     }
 });
-input.addEventListener('keydown', function (event) {
+input.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         button.click();
     }

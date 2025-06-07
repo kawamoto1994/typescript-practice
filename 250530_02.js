@@ -1,8 +1,9 @@
-var greet250530_02 = function (name, num) {
-    var outputHtml = document.querySelector('[data-test]');
-    for (var i = 0; i < num; i++) {
+"use strict";
+const greet250530_02 = (name, num) => {
+    const outputHtml = document.querySelector('[data-test]');
+    for (let i = 0; i < num; i++) {
         if (outputHtml instanceof HTMLElement) {
-            outputHtml.innerHTML += "\u3053\u3093\u306B\u3061\u306F".concat(name, "\u3055\u3093<br>");
+            outputHtml.innerHTML += `こんにちは${name}さん<br>`;
         }
     }
 };

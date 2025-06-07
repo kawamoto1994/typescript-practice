@@ -1,25 +1,31 @@
-var snackList = [
+"use strict";
+const snackList = [
     { name: "チョコレート", flavor: "sweet" },
     { name: "ポテトチップス", flavor: "salty" },
     { name: "ビスケット", flavor: "sweet" },
     { name: "せんべい", flavor: "salty" },
 ];
-var targetElement250607_01 = document.querySelector('[data-output]');
-var checkList = document.querySelectorAll('[data-flavor]');
+const targetElement250607_01 = document.querySelector('[data-output]');
+const checkList = document.querySelectorAll('[data-flavor]');
 if (targetElement250607_01 instanceof HTMLElement) {
-    checkList.forEach(function (item) {
-        item.addEventListener('change', function () {
-            var checkedList = document.querySelectorAll('[data-flavor]:checked');
-            if (checkedList.length === 0) {
-                targetElement250607_01.innerHTML = '';
-            }
-            checkedList.forEach(function (item) {
+    checkList.forEach((item) => {
+        item.addEventListener('change', () => {
+            const checkedList = document.querySelectorAll('[data-flavor]:checked');
+            const snackValues = [];
+            checkedList.forEach((item) => {
                 if (item instanceof HTMLInputElement) {
-                    var snack_1 = item.value;
-                    var filterSnackList = snackList.filter(function (item) { return item.flavor === snack_1; }).map(function (item) { return [item.name]; });
-                    targetElement250607_01.innerHTML += filterSnackList.join('');
+                    snackValues.push(item.value);
                 }
             });
+            const filterSnackList = snackList.filter((item) => {
+                return snackValues.includes(item.flavor);
+            }).map((item) => item.name);
+            if (filterSnackList.length) {
+                targetElement250607_01.innerHTML = `${filterSnackList.join('と')}が絞り込まれました！`;
+            }
+            else {
+                targetElement250607_01.innerHTML = `絞り込みは0件です`;
+            }
         });
     });
 }

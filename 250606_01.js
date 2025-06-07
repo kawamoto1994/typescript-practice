@@ -1,12 +1,13 @@
-var fruitButton = document.querySelector('#count-fruits');
-var targetElement250606 = document.querySelector('[data-output]');
-var fruitData = {};
+"use strict";
+const fruitButton = document.querySelector('#count-fruits');
+const targetElement250606 = document.querySelector('[data-output]');
+const fruitData = {};
 if (fruitButton instanceof HTMLButtonElement && targetElement250606 instanceof HTMLElement) {
-    fruitButton.addEventListener('click', function () {
-        var checkedItems = document.querySelectorAll('[data-fruit]:checked');
-        checkedItems.forEach(function (item) {
+    fruitButton.addEventListener('click', () => {
+        const checkedItems = document.querySelectorAll('[data-fruit]:checked');
+        checkedItems.forEach((item) => {
             if (item instanceof HTMLInputElement) {
-                var fruit = item.value;
+                const fruit = item.value;
                 if (fruitData[fruit]) {
                     fruitData[fruit]++;
                 }
@@ -15,14 +16,13 @@ if (fruitButton instanceof HTMLButtonElement && targetElement250606 instanceof H
                 }
             }
         });
-        var result = Object.keys(fruitData).map(function (key) { return [key, fruitData[key]]; });
-        var sum = 0;
-        var fruits = [];
-        result.forEach(function (_a) {
-            var fruit = _a[0], num = _a[1];
+        const result = Object.keys(fruitData).map((key) => [key, fruitData[key]]);
+        let sum = 0;
+        const fruits = [];
+        result.forEach(([fruit, num]) => {
             sum = sum + num;
             fruits.push(fruit);
         });
-        targetElement250606.innerHTML = "\u9078\u3093\u3060\u30D5\u30EB\u30FC\u30C4\u306F".concat(sum, "\u500B\u3067\u3059\uFF1A").concat(fruits.join('、'));
+        targetElement250606.innerHTML = `選んだフルーツは${sum}個です：${fruits.join('、')}`;
     });
 }

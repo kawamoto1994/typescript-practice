@@ -1,16 +1,17 @@
-var apperanceButton = document.querySelector('#show-button');
-var targetElement250601_03 = document.querySelector('[data-output]');
+"use strict";
+const apperanceButton = document.querySelector('#show-button');
+const targetElement250601_03 = document.querySelector('[data-output]');
 if (apperanceButton instanceof HTMLButtonElement && targetElement250601_03 instanceof HTMLElement) {
-    apperanceButton.addEventListener('click', function () {
-        var fruitItems = document.querySelectorAll('[data-fruit]:checked');
-        var fruitData = [];
-        fruitItems.forEach(function (item) {
-            var checkBox = item;
-            var fruit = checkBox.value;
+    apperanceButton.addEventListener('click', () => {
+        const fruitItems = document.querySelectorAll('[data-fruit]:checked');
+        const fruitData = [];
+        fruitItems.forEach((item) => {
+            const checkBox = item;
+            const fruit = checkBox.value;
             fruitData.push(fruit);
         });
-        var fruitDataString = fruitData.join('と');
-        targetElement250601_03.textContent = "\u3042\u306A\u305F\u306F".concat(fruitDataString, "\u304C\u597D\u304D\u306A\u3093\u3067\u3059\u306D\uFF01");
+        const fruitDataString = fruitData.join('と');
+        targetElement250601_03.textContent = `あなたは${fruitDataString}が好きなんですね！`;
         // fruitData.length = 0;
     });
 }
